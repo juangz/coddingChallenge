@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <NSURLConnectionDelegate>
+@interface ViewController : UIViewController <NSURLConnectionDelegate, UITextFieldDelegate, UITextViewDelegate>
 
 
 @end

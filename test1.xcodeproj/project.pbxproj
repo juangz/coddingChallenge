@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8009490D19F5C634008D705D /* download.png in Resources */ = {isa = PBXBuildFile; fileRef = 8009490919F5C634008D705D /* download.png */; };
+		8009490E19F5C634008D705D /* linkImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 8009490A19F5C634008D705D /* linkImage.png */; };
+		8009490F19F5C634008D705D /* spinnerView.png in Resources */ = {isa = PBXBuildFile; fileRef = 8009490B19F5C634008D705D /* spinnerView.png */; };
+		8009491119F5C771008D705D /* directions.png in Resources */ = {isa = PBXBuildFile; fileRef = 8009491019F5C771008D705D /* directions.png */; };
 		804FE5C519F573B2007489CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 804FE5C419F573B2007489CF /* main.m */; };
 		804FE5C819F573B2007489CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 804FE5C719F573B2007489CF /* AppDelegate.m */; };
 		804FE5CB19F573B2007489CF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 804FE5CA19F573B2007489CF /* ViewController.m */; };
@@ -21,9 +25,6 @@
 		804FE61A19F57F71007489CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 804FE61919F57F71007489CF /* Foundation.framework */; };
 		804FE61C19F57F90007489CF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 804FE61B19F57F90007489CF /* UIKit.framework */; };
 		804FE61E19F57F99007489CF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 804FE61D19F57F99007489CF /* CoreGraphics.framework */; };
-		804FE62019F59984007489CF /* linkImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 804FE61F19F59984007489CF /* linkImage.png */; };
-		804FE62219F59E3D007489CF /* download.png in Resources */ = {isa = PBXBuildFile; fileRef = 804FE62119F59E3D007489CF /* download.png */; };
-		804FE62419F59F7A007489CF /* spinnerView.png in Resources */ = {isa = PBXBuildFile; fileRef = 804FE62319F59F7A007489CF /* spinnerView.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8009490919F5C634008D705D /* download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = download.png; sourceTree = "<group>"; };
+		8009490A19F5C634008D705D /* linkImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linkImage.png; sourceTree = "<group>"; };
+		8009490B19F5C634008D705D /* spinnerView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinnerView.png; sourceTree = "<group>"; };
+		8009491019F5C771008D705D /* directions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = directions.png; sourceTree = "<group>"; };
 		804FE5BF19F573B2007489CF /* test1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		804FE5C319F573B2007489CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		804FE5C419F573B2007489CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -60,9 +65,6 @@
 		804FE61919F57F71007489CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		804FE61B19F57F90007489CF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		804FE61D19F57F99007489CF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		804FE61F19F59984007489CF /* linkImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = linkImage.png; path = test1/linkImage.png; sourceTree = "<group>"; };
-		804FE62119F59E3D007489CF /* download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = download.png; path = test1/download.png; sourceTree = "<group>"; };
-		804FE62319F59F7A007489CF /* spinnerView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spinnerView.png; path = test1/spinnerView.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,12 +89,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8009490719F5C634008D705D /* Artwork */ = {
+			isa = PBXGroup;
+			children = (
+				8009491019F5C771008D705D /* directions.png */,
+				8009490919F5C634008D705D /* download.png */,
+				8009490A19F5C634008D705D /* linkImage.png */,
+				8009490B19F5C634008D705D /* spinnerView.png */,
+			);
+			name = Artwork;
+			path = test1/Artwork;
+			sourceTree = "<group>";
+		};
 		804FE5B619F573B2007489CF = {
 			isa = PBXGroup;
 			children = (
-				804FE62319F59F7A007489CF /* spinnerView.png */,
-				804FE62119F59E3D007489CF /* download.png */,
-				804FE61F19F59984007489CF /* linkImage.png */,
+				8009490719F5C634008D705D /* Artwork */,
 				804FE61D19F57F99007489CF /* CoreGraphics.framework */,
 				804FE61B19F57F90007489CF /* UIKit.framework */,
 				804FE61919F57F71007489CF /* Foundation.framework */,
@@ -247,10 +259,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				804FE5CE19F573B2007489CF /* Main.storyboard in Resources */,
-				804FE62219F59E3D007489CF /* download.png in Resources */,
-				804FE62019F59984007489CF /* linkImage.png in Resources */,
+				8009490E19F5C634008D705D /* linkImage.png in Resources */,
+				8009491119F5C771008D705D /* directions.png in Resources */,
+				8009490D19F5C634008D705D /* download.png in Resources */,
 				804FE5D319F573B2007489CF /* LaunchScreen.xib in Resources */,
-				804FE62419F59F7A007489CF /* spinnerView.png in Resources */,
+				8009490F19F5C634008D705D /* spinnerView.png in Resources */,
 				804FE5D019F573B2007489CF /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,6 +502,7 @@
 				804FE5E419F573B2007489CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		804FE5E519F573B2007489CF /* Build configuration list for PBXNativeTarget "test1Tests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +511,7 @@
 				804FE5E719F573B2007489CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

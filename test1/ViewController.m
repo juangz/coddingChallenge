@@ -14,6 +14,10 @@
 @property NSURL *urlToDownload;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIButton *downloadButton;
+@property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTV;
+@property (weak, nonatomic) IBOutlet UITextField *tittleTF;
+@property NSMutableData *downloadedData;
 @property UIActivityIndicatorView *spinner;
 @property UIImageView *spinnerView;
 @property NSString * webTitle;
@@ -24,10 +28,15 @@
 
 @implementation ViewController
 
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.tittleTF.hidden = YES;
+    self.descriptionTV.hidden = YES;
+    self.image.hidden = YES;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
     
     // set image to the textField
@@ -51,9 +60,16 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName: [UIFont fontWithName:@"GillSans" size:25.0f]}];
    
     
-    
+    // add the image to the url
     self.textField.leftView= imgView;
     self.urlToDownload = [[NSURL alloc] initWithString: @"https://www.facebook.com/thebeatles"];
+    
+    
+    self.descriptionTV.delegate = self;
+    self.descriptionTV.text = @"Add Description...";
+   // self.descriptionTV.textColor = [UIColor lightGrayColor];
+    
+    self.downloadedData = [[NSMutableData alloc] init];
 
 }
 
@@ -61,6 +77,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField*)aTextField
+{
+    [aTextField resignFirstResponder];
+    return YES;
+}
+
 - (IBAction)endEditting:(id)sender {
     UITextField *textEdit =(UITextField*) sender;
     NSMutableString *textCompleted = [[NSMutableString alloc]initWithString:textEdit.text];
@@ -75,8 +98,15 @@
         [alert show];
 
     }
+    else{
+        self.urlToDownload =[[NSURL alloc] initWithString:textCompleted];
+        
+        [self download:nil];
+    }
     
 }
+
+
 
 - (BOOL) validateUrl: (NSString *) candidate {
     NSString *urlRegEx =
@@ -93,29 +123,6 @@
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:self.urlToDownload];
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:urlRequest  delegate:self];
     
-//    NSData  * data      = [NSData dataWithContentsOfURL:self.urlToDownload];
-//    
-//    TFHpple * doc       = [[TFHpple alloc] initWithHTMLData:data];
-//    
-//    NSString *xPathQueryString = @"//meta[@property=\"og:title\"]/@content";
-//    NSArray * elements  = [doc searchWithXPathQuery:xPathQueryString];
-//    
-//    for (TFHppleElement *element in elements ){
-//        
-//        int ;
-//      //  [element]
-//    }
-   
-    
-    
-//    TFHppleElement * element = [elements objectAtIndex:0];
-//    [e text];                       // The text inside the HTML element (the content of the first text node)
-//    [e tagName];                    // "a"
-//    [e attributes];                 // NSDictionary of href, class, id, etc.
-//    [e objectForKey:@"href"];       // Easy access to single attribute
-//    [e firstChildWithTagName:@"b"]; // The first "b" child node
-    
-    
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
@@ -125,7 +132,13 @@
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
     NSLog(@"didReceiveData");
     
-    TFHpple * doc       = [[TFHpple alloc] initWithHTMLData:data];
+    
+    [self.downloadedData appendData:data];
+}
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    NSLog(@"connectionDidFinishLoading");
+    TFHpple * doc       = [[TFHpple alloc] initWithHTMLData:self.downloadedData];
     NSDictionary * attributes;
     BOOL hasOG = YES;
     
@@ -167,10 +180,44 @@
             
         }
     }
+    
+    
+    NSURL *url = [NSURL URLWithString:self.webImage];
+    
+    NSData *data = [[NSData alloc] initWithContentsOfURL:url];
+    
+    UIImage *tmpImage = [[UIImage alloc] initWithData:data];
+    
+    self.image.image = tmpImage;
+    
+    self.tittleTF.text = self.webTitle;
+    self.descriptionTV.text = self.webDescription;
+    
+    
+    
     [self stopSpinner];
-}
--(void)connectionDidFinishLoading:(NSURLConnection *)connection{
-    NSLog(@"connectionDidFinishLoading");
+    
+    
+    CGAffineTransform transform = CGAffineTransformMake(1, 0, 0, 1, 0, 280);
+    [UIView animateWithDuration:0.25 animations:^{
+        self.downloadButton.transform = transform;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+             if (finished){
+                 self.tittleTF.hidden = NO;
+                 self.descriptionTV.hidden = NO;
+                 self.image.hidden = NO;
+                 
+                 UIImageView *iv = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"directions.png"]];
+
+                 [iv setFrame:self.downloadButton.bounds];
+                 [iv setContentMode:UIViewContentModeCenter];
+                 
+                 [self.downloadButton addSubview:iv];
+                 [self.downloadButton bringSubviewToFront:iv];
+             }
+        
+    }];
     
 }
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
@@ -197,6 +244,25 @@
 
 -(void) stopSpinner{
     [self.spinner stopAnimating];
+}
+
+# pragma mark - UITextViewDelegate
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@"Add Description..."]) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor]; //optional
+    }
+    [textView becomeFirstResponder];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@""]) {
+        textView.text = @"Add Description...";
+        textView.textColor = [UIColor lightGrayColor]; //optional
+    }
+    [textView resignFirstResponder];
 }
 
 @end
