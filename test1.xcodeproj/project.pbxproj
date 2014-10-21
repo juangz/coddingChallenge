@@ -11,6 +11,7 @@
 		8009490E19F5C634008D705D /* linkImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 8009490A19F5C634008D705D /* linkImage.png */; };
 		8009490F19F5C634008D705D /* spinnerView.png in Resources */ = {isa = PBXBuildFile; fileRef = 8009490B19F5C634008D705D /* spinnerView.png */; };
 		8009491119F5C771008D705D /* directions.png in Resources */ = {isa = PBXBuildFile; fileRef = 8009491019F5C771008D705D /* directions.png */; };
+		8009491519F6023A008D705D /* AutoLayoutShorthand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8009491419F6023A008D705D /* AutoLayoutShorthand.m */; };
 		804FE5C519F573B2007489CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 804FE5C419F573B2007489CF /* main.m */; };
 		804FE5C819F573B2007489CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 804FE5C719F573B2007489CF /* AppDelegate.m */; };
 		804FE5CB19F573B2007489CF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 804FE5CA19F573B2007489CF /* ViewController.m */; };
@@ -42,6 +43,8 @@
 		8009490A19F5C634008D705D /* linkImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linkImage.png; sourceTree = "<group>"; };
 		8009490B19F5C634008D705D /* spinnerView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinnerView.png; sourceTree = "<group>"; };
 		8009491019F5C771008D705D /* directions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = directions.png; sourceTree = "<group>"; };
+		8009491319F6023A008D705D /* AutoLayoutShorthand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoLayoutShorthand.h; sourceTree = "<group>"; };
+		8009491419F6023A008D705D /* AutoLayoutShorthand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoLayoutShorthand.m; sourceTree = "<group>"; };
 		804FE5BF19F573B2007489CF /* test1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		804FE5C319F573B2007489CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		804FE5C419F573B2007489CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -101,9 +104,20 @@
 			path = test1/Artwork;
 			sourceTree = "<group>";
 		};
+		8009491219F601F6008D705D /* AutoLayout */ = {
+			isa = PBXGroup;
+			children = (
+				8009491319F6023A008D705D /* AutoLayoutShorthand.h */,
+				8009491419F6023A008D705D /* AutoLayoutShorthand.m */,
+			);
+			name = AutoLayout;
+			path = test1/AutoLayout;
+			sourceTree = "<group>";
+		};
 		804FE5B619F573B2007489CF = {
 			isa = PBXGroup;
 			children = (
+				8009491219F601F6008D705D /* AutoLayout */,
 				8009490719F5C634008D705D /* Artwork */,
 				804FE61D19F57F99007489CF /* CoreGraphics.framework */,
 				804FE61B19F57F90007489CF /* UIKit.framework */,
@@ -286,6 +300,7 @@
 				804FE61519F5768E007489CF /* XPathQuery.m in Sources */,
 				804FE5CB19F573B2007489CF /* ViewController.m in Sources */,
 				804FE60E19F5768E007489CF /* TFHpple.m in Sources */,
+				8009491519F6023A008D705D /* AutoLayoutShorthand.m in Sources */,
 				804FE5C819F573B2007489CF /* AppDelegate.m in Sources */,
 				804FE5C519F573B2007489CF /* main.m in Sources */,
 			);

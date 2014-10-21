@@ -43,9 +43,23 @@
     [self.textField setLeftViewMode:UITextFieldViewModeAlways];
     
     UIImageView* imgView =[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"linkImage.png"]];
-    [imgView setFrame:CGRectMake(0, self.textField.frame.size.height/2, self.textField.frame.size.height/2, self.textField.frame.size.height/4)];
+    //[imgView setFrame:CGRectMake(200, 200, self.textField.frame.size.height/2, self.textField.frame.size.height/4)];
     imgView.contentMode = UIViewContentModeScaleAspectFit;
-   
+    // add the image to the url
+   // self.textField.leftView= imgView;
+    
+    
+    
+    [self.view addSubview:imgView];
+    [imgView als_addConstraints:@{
+                                  @"left ==": @{als_view: self.view.als_left, als_constant:@(130)},
+                                  @"width ==": @(30),
+                                  @"top ==":  @{als_view: self.view.als_top, als_constant:@(130)},
+                                  @"height ==": @(30),
+                                  }];
+    [self.view bringSubviewToFront:imgView];
+
+    
     
     // set appeareance for the navigation bar
     NSShadow* shadow = [NSShadow new];
@@ -60,8 +74,7 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName: [UIFont fontWithName:@"GillSans" size:25.0f]}];
    
     
-    // add the image to the url
-    self.textField.leftView= imgView;
+    
     self.urlToDownload = [[NSURL alloc] initWithString: @"https://www.facebook.com/thebeatles"];
     
     

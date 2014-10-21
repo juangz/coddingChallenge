@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AutoLayoutShorthand.h"
 
 @interface ViewController : UIViewController <NSURLConnectionDelegate, UITextFieldDelegate, UITextViewDelegate>
 
